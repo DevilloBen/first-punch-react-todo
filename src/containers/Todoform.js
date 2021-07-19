@@ -15,7 +15,7 @@ const Todoform = () => {
       title: inputState, // add new Data  id auto incres
       completed: false,
     });
-    postTodoList(nextTodoList[0]);
+    postTodoList(nextTodoList[0]);  // createTodoList name file
     setTodoList([...nextTodoList]);
     setInputState(""); // clear input data
   };
