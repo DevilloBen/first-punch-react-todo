@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { getTodoList } from "../utils";
+import { getTodoList, deleteTodoList, postTodoList } from "../utils";
 import { TodoItem } from "../components";
 
-const Todoform = (props) => {
+const Todoform = () => {
   const [todoList, setTodoList] = useState([]);
   const [inputState, setInputState] = useState(String);
-  //const [indexState, setIndexState] = useState(Number);
   const [loading, setLoading] = useState(true); // check Loading..
   const [error, setError] = useState(false); //check error
 
   const handleClick = () => {
     const nextTodoList = todoList;
-
     nextTodoList.unshift({
-      id: 1,
-      title: inputState, // add new Data
+      userId: 1,
+      title: inputState, // add new Data  id auto incres
       completed: false,
     });
+    postTodoList(nextTodoList[0]);
     setTodoList([...nextTodoList]);
-    setInputState("");
+    setInputState(""); // clear input data
   };
 
   const handleEnter = (e) => {
@@ -28,12 +27,12 @@ const Todoform = (props) => {
   };
 
   const handleDelete = (index) => {
-    const deleteTodoList = todoList;
-    console.log(deleteTodoList);
-    //await deleteTodoList(deleteTodoListId);
+    const deleteId = todoList;
+    //console.log(typeof deleteId);  //object
+    deleteTodoList(deleteId[index].id);
 
-    deleteTodoList.splice(index, 1); //delete array old
-    setTodoList([...deleteTodoList]);
+    deleteId.splice(index, 1);
+    setTodoList([...deleteId]);
   };
 
   const _getT0doList = async () => {
@@ -42,7 +41,7 @@ const Todoform = (props) => {
       const response = await getTodoList(); // Check Loading
       setLoading(false);
 
-      setTodoList(response.data); // Old data
+      setTodoList([...response.data]); // Old data
 
       //console.log(typeof(response.data.length)); // set Index id
       //console.log("old id => ", indexState);

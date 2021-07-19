@@ -1,14 +1,8 @@
 import axios from "axios";
 
 const postTodoList = async (data) => {
-  return await axios
-    .post("http://localhost:3001/todos", { data })
-    .than((resp) => {
-      console.log(resp.data);
-    })
-    .catch((error) => {
-      console.log("Error =>",error);
-    });
+  //console.log(data)
+  return await axios.post("http://localhost:3001/todos",data); // if {} up path
 };
 
 export default postTodoList;
