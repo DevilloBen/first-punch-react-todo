@@ -5,7 +5,7 @@ const Todolitem = (props) => {
 
   return (
     <div className="input-text box">
-      {todo.title}
+      <div className = "input-title">{todo.title}</div>
       <button className="btn-del" onClick={() => handleDelete(index)}>
         X
       </button>
