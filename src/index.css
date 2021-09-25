@@ -6,6 +6,20 @@ body {
   margin: 0;
 }
 
+html{
+  --bg: #fff;
+  --bg-panel: #ebebeb;
+  --color-heading: rgb(27, 168, 14); 
+  --color-text: #333333;
+}
+
+html[data-theme='1'] {
+  --bg: #333333;
+  --bg-panel: #434343;
+  --color-heading: #0077ff; 
+  --color-text: #B5B5B5;
+}
+
 .container {
   width: 100vw;
   height: 100vh;
@@ -13,9 +27,11 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 255, 255);
   color: aliceblue;
+  background-color: var(--bg-panel);
 }
+
+
 .text-1 {
   color: black;
 }
